@@ -45,11 +45,14 @@ char **tokenize(char *lp2, int count, char **args)
 /**
  * get_func - checks if opcode is valid and assigns function to
  *            execute if it is
- * @arg: The opcode arg
+ * @args: The string array holding the tokens
  * @stack: The pointer to the stack
  * @line_number: The line number of the opcode / instruction
+ * @file: The opened file with the opcodes / instructions
+ * @lp1: Line pointer
  */
-void get_func(char *arg, stack_t **stack, unsigned int line_number)
+void get_func(char **args, char *lp1, stack_t **stack,
+		unsigned int line_number, FILE *file)
 {
 	instruction_t op_func[] = {
 		{"push", &_push},
@@ -65,7 +68,7 @@ void get_func(char *arg, stack_t **stack, unsigned int line_number)
 
 	while (op_func[i].opcode != NULL)
 	{
-		if (strcmp(op_func[i].opcode, arg) == 0)
+		if (strcmp(op_func[i].opcode, args[0]) == 0)
 		{
 			op_func[i].f(stack, line_number);
 			return;
@@ -73,6 +76,10 @@ void get_func(char *arg, stack_t **stack, unsigned int line_number)
 		i++;
 	}
 	fprintf(stderr, "L%d: unknown instruction <opcode>\n", line_number);
+	free_args(args);
+	free(lp1);
+	_free(*stack);
+	fclose(file);
 	exit(EXIT_FAILURE);
 }
 /**
@@ -85,11 +92,7 @@ void _push(stack_t **stack, unsigned int line_number)
 	stack_t *new;
 	int n;
 
-	if (args_num == NULL || (atoi(args_num) == 0 && strcmp(args_num, "0") != 0))
-	{
-		fprintf(stderr, "L%d: usage: push integer\n", line_number);
-		exit(EXIT_FAILURE);
-	}
+	(void) line_number;
 	n = atoi(args_num);
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)

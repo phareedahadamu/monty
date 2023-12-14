@@ -39,7 +39,8 @@ typedef struct instruction_s
 
 int count_tokens(char *lp);
 char **tokenize(char *lp2, int count, char **args);
-void get_func(char *arg, stack_t **stack, unsigned int line_number);
+void get_func(char **args, char *lp1, stack_t **stack,
+		unsigned int line_number, FILE *file);
 void _push(stack_t **stack, unsigned int line_number);
 void _pall(stack_t **stack, unsigned int line_number);
 void _pint(stack_t **stack, unsigned int line_number);
@@ -50,4 +51,7 @@ void _nop(stack_t **stack, unsigned int line_number);
 void _free(stack_t *stack);
 void free_args(char **args);
 char **fetch_tokens(char *lp2, int count);
+void err_check(char *lp1, stack_t **stack, char **args,
+		FILE *file, unsigned int line_number);
+void free_all(char *lp1, stack_t **stack, char **args, FILE *file);
 #endif
