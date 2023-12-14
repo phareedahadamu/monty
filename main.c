@@ -33,7 +33,8 @@ int main(int argc, char **argv)
 		count = count_tokens(lp1);
 		args = fetch_tokens(lp2, count);
 		free(lp2);
-		err_check(lp1, &stack, args, file, line_number);
+		err_check_1(lp1, &stack, args, file, line_number);
+		err_check_2(lp1, &stack, args, file, line_number);
 		get_func(args, lp1, &stack, line_number, file);
 		line_number++;
 		free_args(args);

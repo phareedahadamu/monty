@@ -65,7 +65,7 @@ void _swap(stack_t **stack, unsigned int line_number)
 	*stack = second;
 }
 /**
- * _add - Sums up the tops to elements in a stack and replaces them so
+ * _add - Sums up the top two elements in a stack and replaces them so
  *        the stack is one element less
  * @stack: Pointer to the stack doubly linked list
  * @line_number: The line number of the opcode / instruction

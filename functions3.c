@@ -45,14 +45,14 @@ char **fetch_tokens(char *lp2, int count)
 	return (args);
 }
 /**
- * err_check - Checks for errors and prints the error messages
+ * err_check_1 - Checks for errors and prints the error messages
  * @lp1: Line pointer
  * @stack: Pointer to the stack
  * @args: Array of strings holding tokens
  * @file: open file pointer of the opcodes / instructions
  * @line_number: line number of the opcode
  */
-void err_check(char *lp1, stack_t **stack, char **args,
+void err_check_1(char *lp1, stack_t **stack, char **args,
 		FILE *file, unsigned int line_number)
 {
 	if ((strcmp(args[0], "push") == 0 && args[1] == NULL) || (strcmp(args[0],
@@ -84,6 +84,12 @@ void err_check(char *lp1, stack_t **stack, char **args,
 	if (strcmp(args[0], "add") == 0 && (*stack == NULL || (*stack)->next == NULL))
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
+		free_all(lp1, stack, args, file);
+		exit(EXIT_FAILURE);
+	}
+	if (strcmp(args[0], "sub") == 0 && (*stack == NULL || (*stack)->next == NULL))
+	{
+		fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
 		free_all(lp1, stack, args, file);
 		exit(EXIT_FAILURE);
 	}

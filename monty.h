@@ -48,10 +48,16 @@ void _pop(stack_t **stack, unsigned int line_number);
 void _swap(stack_t **stack, unsigned int line_number);
 void _add(stack_t **stack, unsigned int line_number);
 void _nop(stack_t **stack, unsigned int line_number);
+void _sub(stack_t **stack, unsigned int line_number);
+void _div(stack_t **stack, unsigned int line_number);
+void _mul(stack_t **stack, unsigned int line_number);
+void _mod(stack_t **stack, unsigned int line_number);
 void _free(stack_t *stack);
 void free_args(char **args);
 char **fetch_tokens(char *lp2, int count);
-void err_check(char *lp1, stack_t **stack, char **args,
+void err_check_1(char *lp1, stack_t **stack, char **args,
+		FILE *file, unsigned int line_number);
+void err_check_2(char *lp1, stack_t **stack, char **args,
 		FILE *file, unsigned int line_number);
 void free_all(char *lp1, stack_t **stack, char **args, FILE *file);
 #endif
