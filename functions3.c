@@ -1,5 +1,4 @@
 #include "monty.h"
-
 /**
  * _nop - Does nothing
  * @stack: Pointer to the stack doubly linked list
@@ -31,7 +30,6 @@ void free_args(char **args)
  * @count: The number of tokens
  * Return: An array of strings with the tokens
  */
-char *args_num;
 char **fetch_tokens(char *lp2, int count)
 {
 	char **args = NULL;

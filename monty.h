@@ -60,4 +60,5 @@ void err_check_1(char *lp1, stack_t **stack, char **args,
 void err_check_2(char *lp1, stack_t **stack, char **args,
 		FILE *file, unsigned int line_number);
 void free_all(char *lp1, stack_t **stack, char **args, FILE *file);
+FILE *open_file(char *filename);
 #endif
