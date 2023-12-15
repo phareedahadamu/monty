@@ -70,7 +70,7 @@ void err_check_1(char *lp1, stack_t **stack, char **args,
 	}
 	if (strcmp(args[0], "pop") == 0 && *stack == NULL)
 	{
-		fprintf(stderr, "L<%d>: can't pop an empty stack\n", line_number);
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 		free_all(lp1, stack, args, file);
 		exit(EXIT_FAILURE);
 	}
