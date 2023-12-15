@@ -35,6 +35,14 @@ int main(int argc, char **argv)
 			continue;
 		}
 		args = fetch_tokens(lp2, count);
+		if (args[0][0] == '#')
+                {
+                        read_val = getline(&lp1, &n, file);
+                        free(lp2);
+			free_args(args);
+                        line_number++;
+                        continue;
+                }
 		free(lp2);
 		err_check_1(lp1, &stack, args, file, line_number);
 		err_check_2(lp1, &stack, args, file, line_number);
