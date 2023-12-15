@@ -31,6 +31,13 @@ int main(int argc, char **argv)
 	{
 		lp2 = strdup(lp1);
 		count = count_tokens(lp1);
+		if (count == 0)
+		{
+			read_val = getline(&lp1, &n, file);
+			free(lp2);
+			line_number++;
+			continue;
+		}
 		args = fetch_tokens(lp2, count);
 		free(lp2);
 		err_check_1(lp1, &stack, args, file, line_number);
