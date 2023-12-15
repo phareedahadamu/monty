@@ -36,7 +36,6 @@ int main(int argc, char **argv)
 		err_check_1(lp1, &stack, args, file, line_number);
 		err_check_2(lp1, &stack, args, file, line_number);
 		get_func(args, lp1, &stack, line_number, file);
-		line_number++;
 		free_args(args);
 		line_number++;
 		read_val = getline(&lp1, &n, file);
