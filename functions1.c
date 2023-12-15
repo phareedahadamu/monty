@@ -79,7 +79,7 @@ void get_func(char **args, char *lp1, stack_t **stack,
 		}
 		i++;
 	}
-	fprintf(stderr, "L%d: unknown instruction <opcode>\n", line_number);
+	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, args[0]);
 	free_args(args);
 	free(lp1);
 	_free(*stack);
