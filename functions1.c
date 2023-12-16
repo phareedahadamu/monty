@@ -66,6 +66,7 @@ void get_func(char **args, char *lp1, stack_t **stack,
 		{"div", &_div},
 		{"mul", &_mul},
 		{"mod", &_mod},
+		{"pchar", &_pchar},
 		{NULL, NULL}
 	};
 	int i = 0;

@@ -118,4 +118,16 @@ void err_check_2(char *lp1, stack_t **stack, char **args,
 		free_all(lp1, stack, args, file);
 		exit(EXIT_FAILURE);
 	}
+	if (strcmp(args[0], "pchar") == 0 && *stack == NULL)
+	{
+		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
+		free_all(lp1, stack, args, file);
+		exit(EXIT_FAILURE);
+	}
+	if (strcmp(args[0], "pchar") == 0 && (*stack)->n > 127)
+	{
+		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
+		free_all(lp1, stack, args, file);
+		exit(EXIT_FAILURE);
+	}
 }

@@ -52,6 +52,7 @@ void _sub(stack_t **stack, unsigned int line_number);
 void _div(stack_t **stack, unsigned int line_number);
 void _mul(stack_t **stack, unsigned int line_number);
 void _mod(stack_t **stack, unsigned int line_number);
+void _pchar(stack_t **stack, unsigned int line_number);
 void _free(stack_t *stack);
 void free_args(char **args);
 char **fetch_tokens(char *lp2, int count);
