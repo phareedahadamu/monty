@@ -60,3 +60,25 @@ void _pstr(stack_t **stack, unsigned int line_number)
 	}
 	printf("\n");
 }
+/**
+ * _rotl - Moves the top element of the stack to the end
+ * @stack: Pointer to the stack
+ * @line_number: The line number of the opcode in the file
+ */
+void _rotl(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tmp = NULL, *place_holder = NULL;
+
+	(void)line_number;
+	if (*stack == NULL || (*stack)->next == NULL)
+		return;
+	tmp = *stack;
+	place_holder = *stack;
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+	*stack = place_holder->next;
+	tmp->next = place_holder;
+	place_holder->prev = tmp;
+	place_holder->next = NULL;
+}
+
