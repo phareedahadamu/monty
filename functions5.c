@@ -81,4 +81,25 @@ void _rotl(stack_t **stack, unsigned int line_number)
 	place_holder->prev = tmp;
 	place_holder->next = NULL;
 }
+/**
+ * _rotr - Moves the last element of the stack to the top
+ * @stack: Pointer to the stack
+ * @line_number: The line number of the opcode in the file
+ */
+void _rotr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tmp = NULL, *place_holder = NULL, *tmp1 = NULL;
 
+	(void)line_number;
+	if (*stack == NULL || (*stack)->next == NULL)
+		return;
+	tmp = *stack;
+	place_holder = *stack;
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+	tmp1 = tmp->prev;
+	tmp1->next = NULL;
+	tmp->next = place_holder;
+	place_holder->prev = tmp;
+	*stack = tmp;
+}
