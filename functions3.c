@@ -58,38 +58,32 @@ void err_check_1(char *lp1, stack_t **stack, char **args,
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		free_all(lp1, stack, args, file);
-		exit(EXIT_FAILURE);
 	}
 	if (strcmp(args[0], "pint") == 0 && *stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
 		free_all(lp1, stack, args, file);
-		exit(EXIT_FAILURE);
 	}
 	if (strcmp(args[0], "pop") == 0 && *stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 		free_all(lp1, stack, args, file);
-		exit(EXIT_FAILURE);
 	}
 	if (strcmp(args[0], "swap") == 0 && (*stack == NULL ||
 				(*stack)->next == NULL))
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
 		free_all(lp1, stack, args, file);
-		exit(EXIT_FAILURE);
 	}
 	if (strcmp(args[0], "add") == 0 && (*stack == NULL || (*stack)->next == NULL))
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
 		free_all(lp1, stack, args, file);
-		exit(EXIT_FAILURE);
 	}
 	if (strcmp(args[0], "sub") == 0 && (*stack == NULL || (*stack)->next == NULL))
 	{
 		fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
 		free_all(lp1, stack, args, file);
-		exit(EXIT_FAILURE);
 	}
 }
 /**
@@ -105,4 +99,5 @@ void free_all(char *lp1, stack_t **stack, char **args, FILE *file)
 	_free(*stack);
 	free_args(args);
 	fclose(file);
+	exit(EXIT_FAILURE);
 }

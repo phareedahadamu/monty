@@ -31,3 +31,32 @@ void _pchar(stack_t **stack, unsigned int line_number)
 	(void) line_number;
 	printf("%c\n", c);
 }
+/**
+ * _pstr - Prints string starting at the top of the stack, followed by a new
+ * line. The integer stored in each element of the stack is treated as the
+ * ascii value of the character to be printed
+ * @stack: Pointer to the stack
+ * @line_number: The line number of the opcode in the file
+ */
+void _pstr(stack_t **stack, unsigned int line_number)
+{
+	char c;
+	stack_t *tmp = NULL;
+
+	(void)line_number;
+	if (*stack == NULL)
+	{
+		printf("\n");
+		return;
+	}
+	tmp = *stack;
+	while (tmp != NULL)
+	{
+		c = tmp->n;
+		if (tmp->n < 1 || tmp->n > 127)
+			break;
+		printf("%c", c);
+		tmp = tmp->next;
+	}
+	printf("\n");
+}

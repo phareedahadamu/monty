@@ -88,46 +88,39 @@ void err_check_2(char *lp1, stack_t **stack, char **args,
 		fprintf(stderr, "L%d: can't div, stack too short\n",
 				line_number);
 		free_all(lp1, stack, args, file);
-		exit(EXIT_FAILURE);
 	}
 	if (strcmp(args[0], "div") == 0 && (*stack != NULL && (*stack)->next != NULL)
 			&& (*stack)->n == 0)
 	{
 		fprintf(stderr, "L%d: division by zero\n", line_number);
 		free_all(lp1, stack, args, file);
-		exit(EXIT_FAILURE);
 	}
 	if (strcmp(args[0], "mul") == 0 && (*stack == NULL || (*stack)->next == NULL))
 	{
 		fprintf(stderr, "L%d: can't mul, stack too short\n",
 				line_number);
 		free_all(lp1, stack, args, file);
-		exit(EXIT_FAILURE);
 	}
 	if (strcmp(args[0], "mod") == 0 && (*stack == NULL || (*stack)->next == NULL))
 	{
 		fprintf(stderr, "L%d: can't mod, stack too short\n",
 				line_number);
 		free_all(lp1, stack, args, file);
-		exit(EXIT_FAILURE);
 	}
 	if (strcmp(args[0], "mod") == 0 && (*stack != NULL && (*stack)->next != NULL)
 			&& (*stack)->n == 0)
 	{
 		fprintf(stderr, "L%d: division by zero\n", line_number);
 		free_all(lp1, stack, args, file);
-		exit(EXIT_FAILURE);
 	}
 	if (strcmp(args[0], "pchar") == 0 && *stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
 		free_all(lp1, stack, args, file);
-		exit(EXIT_FAILURE);
 	}
 	if (strcmp(args[0], "pchar") == 0 && ((*stack)->n > 127 || (*stack)->n < 0))
 	{
 		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
 		free_all(lp1, stack, args, file);
-		exit(EXIT_FAILURE);
 	}
 }
