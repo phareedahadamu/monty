@@ -54,7 +54,7 @@ void err_check_1(char *lp1, stack_t **stack, char **args,
 		FILE *file, unsigned int line_number)
 {
 	if ((strcmp(args[0], "push") == 0 && args[1] == NULL) || (strcmp(args[0],
-					"push") == 0 && (atoi(args[1]) == 0 && strcmp(args[1], "0") != 0)))
+					"push") == 0 && (atoi(args[1]) == 0 && strcmp(args[1], "0") != 0)) || (strcmp(args[0], "push") == 0 && (atoi(args[1]) < 0)))
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		free_all(lp1, stack, args, file);
